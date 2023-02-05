@@ -2,6 +2,27 @@
 
 {% block content %}
 
-    <h1>Login Form</h1>
+<div style="background-color: aliceblue; margin-top: 10px; margin-left: 10px; margin-right: 10px; padding-top: 40px; padding-bottom: 40px; text-align: center;">
+    <h1> Login your Account</h1>
+    <h3>Fill up the data</h3>
+</div>
+<div>
+    <form method="POST">
+        <div style="padding: 20px 100px 50px 100px;">
+            {{form.hidden_tag()}}
+            <div class="form-group">
+            {{form.email.label(class="form-label")}}{{form.email(class="form-control")}} <br>
+            </div>
+
+            <div class="form-group">
+            {{form.password.label(class="form-label")}}{{form.password(class="form-control")}} <br>
+            </div>
+
+            <div class="form-group">
+            {{ form.submit(class="btn btn-dark") }}
+            </div>
+        </div> 
+    </form>
+</div>
 
 {% endblock %}
