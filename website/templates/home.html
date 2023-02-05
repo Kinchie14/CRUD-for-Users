@@ -2,4 +2,13 @@
 
 {% block content %}
     <h1>First Block</h1>
+    {% for user in user  %}
+    {{ user.id}}
+    {{ user.name}}
+    {{ user.email}} 
+    {{ user.password}}<br>
+
+    {% endfor  %}
+
+
 {% endblock %}
