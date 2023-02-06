@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>View Information</h1>
+    <h4>{{ info.id }}</h4> <br>
+    <h4>{{ info.name }}</h4> <br>
+    <h4>{{ info.email }}    </h4> <br>
+    
+    {% if id == current_user.id %}
+        <div>
+            <a href="{{ url_for('views.update_information', user_id = info.id) }}">Update</a>
+            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#del_modal">Delete</button>
+        </div>
+    {% else %}
+        <div>
+            <a href="{{ url_for('views.home', user_id = info.id) }}">Back</a>
+        </div>
+    
+    {% endif %}
+
+    <div class="modal" tabindex="-1" id = "del_modal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Delete User?</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <p>Are you sure you want to delete the user?</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+              <form action="{{ url_for('views.delete_information', user_id = info.id) }}" method="POST">
+                <input class="btn btn-danger" type="submit" value="Delete">
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+       
+
+
+{% endblock %}

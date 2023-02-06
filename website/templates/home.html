@@ -2,12 +2,15 @@
 
 {% block content %}
     <h1>First Block</h1>
-    {% for user in user  %}
-    {{ user.id}}
-    {{ user.name}}
-    {{ user.email}} 
-    {{ user.password}}<br>
 
+    <!-- Posting the data of the users -->
+    {% for user in user  %}
+    <div style="margin: 20px 0 50px 20px;">
+    <h2>{{ user.name}} </h2><br>
+    <form action="">
+        <a href="{{url_for('views.view_information', user_id = user.id)}}" class="btn btn-primary">Read User Information</a>
+    </form>
+    </div>
     {% endfor  %}
 
 
